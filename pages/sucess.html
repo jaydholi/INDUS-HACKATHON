@@ -1,12 +1,79 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sucess</title>
+    <title>Success</title>
     <link rel="stylesheet" href="../CSS/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
 </head>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f4;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+    }
+
+    .success-container {
+        text-align: center;
+    }
+
+    .success-card {
+        background: #ffffff;
+        padding: 30px;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        max-width: 400px;
+        text-align: center;
+    }
+
+    .success-card i {
+        font-size: 50px;
+        color: #28a745;
+    }
+
+    h1 {
+        color: #333;
+        margin-top: 10px;
+    }
+
+    p {
+        color: #555;
+        font-size: 16px;
+    }
+
+    .home-btn {
+        display: inline-block;
+        margin-top: 15px;
+        padding: 10px 20px;
+        background: #007bff;
+        color: white;
+        text-decoration: none;
+        border-radius: 5px;
+        font-size: 16px;
+        transition: 0.3s;
+    }
+
+    .home-btn:hover {
+        background: #0056b3;
+    }
+</style>
+
 <body>
-    <h1>thanks for submting your information , we have recorded your detailes <br> our team will contact you soon</h1>
+    <div class="success-container">
+        <div class="success-card">
+            <i class="fas fa-check-circle"></i>
+            <h1>Thank You!</h1>
+            <p>Your information has been successfully recorded. 🎉</p>
+            <p>Our team will contact you soon.</p>
+            <a href="index.html" class="home-btn">Back to Home</a>
+        </div>
+    </div>
 </body>
+
 </html>
