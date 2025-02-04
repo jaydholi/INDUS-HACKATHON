@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Application Tracking</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+       /* Default Styles */
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: #001f3f;
+    margin: 0;
+    padding: 0;
+    color: white;
+}
+
+/* Navbar */
+.navbar {
+    border-bottom: 2px solid #ffc107;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    background-color: #001f3f;
+}
+
+.navbar-brand {
+    font-weight: 600;
+    color: #ffc107;
+    font-size: 1.3rem;
+}
+
+.navbar-brand:hover {
+    color: #fff;
+}
+
+.nav-link {
+    color: white;
+    font-size: 1rem;
+}
+
+.nav-link:hover {
+    color: #ffc107;
+}
+
+/* Main Content */
+.content {
+    padding: 2rem;
+}
+
+/* Status Overview */
+.status-overview {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.status-overview h2 {
+    font-size: 1.8rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    color: #ffc107;
+}
+
+.status-overview p {
+    font-size: 1rem;
+    color: #f8f9fa;
+}
+
+/* Document Table */
+.documents-table {
+    background: #001a35;
+    border: 1px solid #ffc107;
+    border-radius: 10px;
+    padding: 1.5rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+}
+
+.documents-table h5 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: #ffc107;
+}
+
+/* Table Styling */
+.table-responsive {
+    overflow-x: auto;
+    width: 100%;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+table th {
+    background-color: #ffc107;
+    color: #001f3f;
+    font-weight: 600;
+    text-align: center;
+}
+
+table td {
+    vertical-align: middle;
+    color: white;
+    font-size: 1rem;
+    text-align: center;
+}
+
+/* Notifications */
+.notifications {
+    text-align: center;
+    margin-top: 2rem;
+}
+
+.notifications h5 {
+    font-weight: 600;
+    color: #ffc107;
+}
+
+.notifications p {
+    color: white;
+}
+
+.notifications .col-md-4 {
+    padding: 1rem;
+    background: #ffc107;
+    border: 1px solid #001f3f;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+    margin: 0.5rem;
+    color: #001f3f;
+}
+
+.notifications .col-md-4:hover {
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.5);
+}
+
+/* Button Styling */
+.btn-primary {
+    background-color: #ffc107;
+    border-color: #ffc107;
+    color: #001f3f;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+.btn-primary:hover {
+    background-color: #e0a800;
+    border-color: #e0a800;
+    transform: scale(1.05);
+}
+
+/* Icon Styles */
+.icon {
+    font-size: 1.5rem;
+    color: white;
+    margin-right: 0.5rem;
+}
+
+/* Status Styling */
+.status-icon {
+    padding: 5px 10px;
+    border-radius: 5px;
+    display: inline-block;
+}
+
+.pending-status {
+    background-color: yellow;
+    color: black;
+}
+
+.uploaded-status {
+    background-color: green;
+    color: white;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .status-overview h2 {
+        font-size: 1.5rem;
+    }
+
+    .status-overview p {
+        font-size: 0.9rem;
+    }
+
+    .documents-table h5 {
+        font-size: 1.1rem;
+    }
+
+    table td {
+        font-size: 0.9rem;
+    }
+
+    .notifications h5 {
+        font-size: 1.1rem;
+    }
+
+    .notifications .col-md-4 {
+        width: 100%;
+        margin-bottom: 1rem;
+    }
+}
+
+@media (max-width: 576px) {
+    .status-overview h2 {
+        font-size: 1.3rem;
+    }
+
+    .status-overview p {
+        font-size: 0.85rem;
+    }
+
+    .documents-table h5 {
+        font-size: 1rem;
+    }
+
+    table th,
+    table td {
+        font-size: 0.85rem;
+    }
+
+    .notifications h5 {
+        font-size: 1rem;
+    }
+
+    .notifications p {
+        font-size: 0.9rem;
+    }
+
+    .btn {
+        font-size: 0.85rem;
+        padding: 6px 10px;
+    }
+}
+
+    </style>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg">
+        <div class="container">
+            <a class="navbar-brand" href="#">Welfare Navigator</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon" style="color: #ffc107;">☰</span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="../index.html"><i class="fas fa-home"></i> Home</a>
+                    </li>
+                    <li class="nav-item"><a class="nav-link" href="all-schemes.html"><i class="fas fa-archive"></i> Schemes</a></li>
+                    <li class="nav-item"><a class="nav-link" href="contact.html"><i class="fas fa-phone-alt"></i> Contact</a></li>
+                    <li class="nav-item"><a class="nav-link" href="settings.html"><i class="fas fa-user-plus"></i> Settings</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="content container">
+        <div class="status-overview">
+            <h2>Application Status Overview</h2>
+            <p>Your application is currently being reviewed. You will receive updates once the review is complete. Estimated completion: 2 weeks.</p>
+        </div>
+
+        <div class="documents-table">
+            <h5>Required Documents</h5>
+
+            <div class="table-responsive">
+                <table class="table table-bordered mt-3">
+                    <thead>
+                        <tr>
+                            <th>Document Name</th>
+                            <th>Status</th>
+                            <th>Action Required</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Identity Proof</td>
+                            <td id="identity-proof-status">
+                                <span class="status-icon pending-status">
+                                    <i class="bi bi-x-circle" style="color: red;"></i> Pending
+                                </span>
+                            </td>
+                            <td>
+                                <input type="file" class="form-control" id="identity-proof-upload" />
+                                <button class="btn btn-success btn-sm mt-2" id="upload-identity-btn">Upload</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Address Proof</td>
+                            <td id="address-proof-status">
+                                <span class="status-icon pending-status">
+                                    <i class="bi bi-x-circle" style="color: red;"></i> Pending
+                                </span>
+                            </td>
+                            <td>
+                                <input type="file" class="form-control" id="address-proof-upload" />
+                                <button class="btn btn-success btn-sm mt-2" id="upload-address-btn">Upload</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Income Statement</td>
+                            <td id="income-statement-status">
+                                <span class="status-icon pending-status">
+                                    <i class="bi bi-x-circle" style="color: red;"></i> Pending
+                                </span>
+                            </td>
+                            <td>
+                                <input type="file" class="form-control" id="income-statement-upload" />
+                                <button class="btn btn-success btn-sm mt-2" id="upload-income-btn">Upload</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <p class="text-center mt-2">Please ensure all required documents are submitted to proceed with your application.</p>
+        </div>
+
+        <div class="notifications mt-4">
+            <h5>Application Notifications</h5>
+            <div class="row mt-3 justify-content-center">
+                <div class="col-md-4">
+                    <i class="icon bi bi-info-circle"></i>
+                    <p>Application Updates</p>
+                    <p>Your application status has changed to "Under Review."</p>
+                </div>
+                <div class="col-md-4">
+                    <i class="icon bi bi-bell"></i>
+                    <p>Deadline Reminder</p>
+                    <p>Submit remaining documents by October 15th.</p>
+                </div>
+                <div class="col-md-4">
+                    <i class="icon bi bi-envelope"></i>
+                    <p>Important Message</p>
+                    <p>Please verify your email to proceed further.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Handle Identity Proof Upload
+        document.getElementById('upload-identity-btn').addEventListener('click', function () {
+            document.getElementById('identity-proof-status').innerHTML = '<span class="status-icon uploaded-status"><i class="bi bi-check-circle" style="color: green;"></i> Uploaded</span>';
+        });
+
+        // Handle Address Proof Upload
+        document.getElementById('upload-address-btn').addEventListener('click', function () {
+            document.getElementById('address-proof-status').innerHTML = '<span class="status-icon uploaded-status"><i class="bi bi-check-circle" style="color: green;"></i> Uploaded</span>';
+        });
+
+        // Handle Income Statement Upload
+        document.getElementById('upload-income-btn').addEventListener('click', function () {
+            document.getElementById('income-statement-status').innerHTML = '<span class="status-icon uploaded-status"><i class="bi bi-check-circle" style="color: green;"></i> Uploaded</span>';
+        });
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Government Welfare Schemes</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* Body Styling */
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f0f0f0;
+            color: white;
+            line-height: 1.6;
+        }
+
+        /* Navbar Styling */
+        .navbar {
+            background-color: #003366;
+        }
+
+        .navbar-nav .nav-link {
+            color: white;
+            font-size: 18px;
+        }
+
+        .navbar-nav .nav-link:hover {
+            color: #ffcc00;
+        }
+
+        /* Navbar Toggler Button Styling */
+        .navbar-toggler {
+            border: none;
+            /* Remove border to avoid rectangle shape */
+            padding: 5px 10px;
+            /* Smaller padding to make the button more compact */
+            background-color: #ffcc00;
+            /* Make the background color match the design */
+            border-radius: 5px;
+            /* Slightly rounded */
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+            /* Add shadow for better contrast */
+        }
+
+        /* Change the icon size inside the toggler button */
+        .navbar-toggler-icon {
+            background-color: #003366;
+            /* Dark color for the hamburger icon */
+            width: 25px;
+            /* Reduce the width of the icon */
+            height: 18px;
+            /* Reduce the height of the icon */
+        }
+
+        /* Header */
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+            color: #003366;
+            padding: 20px;
+        }
+
+        .header h1 {
+            font-size: 50px;
+            margin-bottom: 10px;
+        }
+
+        .header p {
+            font-size: 20px;
+            color: #555;
+            margin-bottom: 20px;
+        }
+
+        #search-bar {
+            margin-top: 20px;
+            padding: 12px;
+            width: 60%;
+            font-size: 18px;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+        }
+
+        /* Scheme Cards */
+        .scheme-card {
+            background-color: #003366;
+            /* Blue */
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            text-align: center;
+            color: white;
+            min-height: 300px;
+        }
+
+        .scheme-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .scheme-icon img {
+            width: 80px;
+            height: 80px;
+            margin-bottom: 20px;
+        }
+
+        .scheme-info h2 {
+            font-size: 30px;
+            margin-bottom: 10px;
+            color: #ffcc00;
+            /* Yellow */
+        }
+
+        .scheme-info p {
+            font-size: 16px;
+            margin-bottom: 20px;
+        }
+
+        /* Button Styling */
+        button {
+            background-color: #ffcc00;
+            /* Yellow */
+            color: #003366;
+            /* Blue */
+            border: none;
+            padding: 12px 30px;
+            font-size: 18px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #e6b800;
+        }
+
+        /* Grid Styling */
+        .scheme-row {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+
+        .scheme-row .col-md-4 {
+            margin-bottom: 30px;
+        }
+
+        /* Floating Icons */
+        .floating-icons {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 1000;
+        }
+
+        .floating-icons a {
+            display: block;
+            background-color: #ffcc00;
+            color: #003366;
+            font-size: 30px;
+            padding: 15px;
+            margin: 5px;
+            border-radius: 50%;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        .floating-icons a:hover {
+            background-color: #e6b800;
+            transform: scale(1.1);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            #search-bar {
+                width: 80%;
+            }
+
+            .scheme-card {
+                min-height: 350px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 36px;
+            }
+
+            .scheme-info h2 {
+                font-size: 26px;
+            }
+
+            button {
+                font-size: 16px;
+            }
+
+            .scheme-row {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .header h1 {
+                font-size: 28px;
+            }
+
+            .scheme-info h2 {
+                font-size: 22px;
+            }
+
+            button {
+                font-size: 14px;
+                width: 80%;
+            }
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            background-color: #003366;
+            color: #fff;
+            margin-top: 40px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Navbar Section -->
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container">
+            <a class="navbar-brand" href="#">Welfare Schemes</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="../index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/pages/scheme-details.html">Schemes Details</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/pages/contact.html">Contact</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <!-- Header Section -->
+        <header class="header">
+            <h1>Explore Government Welfare Schemes</h1>
+            <p>Search schemes and find the welfare initiatives available for all sectors in India.</p>
+            <!-- Search Bar -->
+            <input type="text" id="search-bar" class="form-control" placeholder="Search schemes..."
+                onkeyup="searchSchemes()">
+        </header>
+
+        <!-- Schemes Section -->
+        <section class="scheme-row" id="schemes-container">
+            <!-- Schemes will be dynamically added here -->
+        </section>
+    </div>
+
+    <!-- Footer Section -->
+    <footer class="text-white py-4" style="background-color: #003366;">
+        <div class="container">
+            <div class="row align-items-center text-center text-md-start">
+                <!-- PM Section -->
+                <div class="col-md-3 mb-3 mb-md-0 text-center">
+                    <img src="/images/India PM.png" alt="PM of India" class="img-fluid rounded-circle shadow">
+                    <p class="mt-2"><strong>Hon'ble PM of India</strong></p>
+                </div>
+
+                <!-- Footer Details Section -->
+                <div class="col-md-6 text-center">
+                    <h6 class="mb-2"><strong>Government of Gujarat</strong></h6>
+                    <p>Promoting welfare and development for the citizens of Gujarat and India. Committed to providing
+                        opportunities, improving infrastructure, and fostering inclusivity for a brighter future.</p>
+                    <div class="social-icons mt-3">
+                        <a href="#" class="text-white mx-2"><i class="fab fa-facebook"></i></a>
+                        <a href="#" class="text-white mx-2"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="text-white mx-2"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="text-white mx-2"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                    <p class="mt-3">© 2025 All Rights Reserved | Designed & Developed by UpliftEngineers</p>
+                </div>
+
+                <!-- CM Section -->
+                <div class="col-md-3 text-center">
+                    <img src="/images/Gujarat CM (4).png" alt="CM of Gujarat" class="img-fluid rounded-circle shadow">
+                    <p class="mt-2"><strong>Hon'ble CM of Gujarat</strong></p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+
+
+
+
+
+    <!-- Scripts -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+        // Search Bar Functionality
+        function searchSchemes() {
+            const searchInput = document.getElementById("search-bar").value.toLowerCase();
+            const cards = document.querySelectorAll(".scheme-card");
+
+            cards.forEach(card => {
+                const schemeName = card.getAttribute("data-scheme").toLowerCase();
+                if (schemeName.includes(searchInput)) {
+                    card.parentElement.style.display = "block";
+                } else {
+                    card.parentElement.style.display = "none";
+                }
+            });
+        }
+
+        // Load schemes from local storage and render them
+        document.addEventListener('DOMContentLoaded', function () {
+            const schemesContainer = document.getElementById('schemes-container');
+            const schemes = JSON.parse(localStorage.getItem('schemes')) || [];
+            // schemes.push(...new_local_scheme);
+            schemes.forEach(scheme => {
+                const schemeCard = document.createElement('div');
+                schemeCard.className = 'col-md-4';
+                schemeCard.innerHTML = `
+                    <div class="scheme-card" data-scheme="${scheme.name}">
+                        <div class="scheme-icon">
+                            <i class="${scheme.icon} fa-3x" style="color: #ffcc00;"></i>
+                        </div>
+                        <div class="scheme-info">
+                            <h2>${scheme.name}</h2>
+                            <p>${scheme.description}</p>
+                            <a href="${scheme.link}"><button>Apply Now</button></a>
+                        </div>
+                    </div>
+                `;
+                schemesContainer.appendChild(schemeCard);
+            });
+            const new_local_scheme = JSON.parse(localStorage.getItem('scheme_one')) || []; 
+            console.log(new_local_scheme);
+            const schemeCard = document.createElement('div');
+            schemeCard.className = 'col-md-4';
+            schemeCard.innerHTML = `
+                    <div class="scheme-card" data-scheme="${new_local_scheme.name}">
+                        <div class="scheme-icon">
+                            <i class="${new_local_scheme.icon} fa-3x" style="color: #ffcc00;"></i>
+                        </div>
+                        <div class="scheme-info">
+                            <h2>${new_local_scheme.name}</h2>
+                            <p>${new_local_scheme.description}</p>
+                            <a href="${new_local_scheme.link}"><button>Apply Now</button></a>
+                        </div>
+                    </div>
+                `;
+                schemesContainer.appendChild(schemeCard);
+        });
+    </script>
+    <!-- <script>
+         document.addEventListener('DOMContentLoaded', function () {
+            const schemesContainer = document.getElementById('schemes-container');
+            const schemes = JSON.parse(localStorage.getItem('schemes_one')) || [];
+
+            schemes.forEach(scheme => {
+                const schemeCard = document.createElement('div');
+                schemeCard.className = 'col-md-4';
+                schemeCard.innerHTML = `
+                    <div class="scheme-card" data-scheme="${scheme.name}">
+                        <div class="scheme-icon">
+                            <i class="${scheme.icon} fa-3x" style="color: #ffcc00;"></i>
+                        </div>
+                        <div class="scheme-info">
+                            <h2>${scheme.name}</h2>
+                            <p>${scheme.description}</p>
+                            <a href="${scheme.link}"><button>Apply Now</button></a>
+                        </div>
+                    </div>
+                `;
+                schemesContainer.appendChild(schemeCard);
+            });
+        });
+    </script> -->
+</body>
+
+</html>
