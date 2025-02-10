@@ -74,7 +74,7 @@ createacctbtn.addEventListener("click", async function() {
         name: name,
         phone: phone,
         email: signupEmail,
-        Password: passwordInput
+        // Password: passwordInput
       });
       // localStorage.setItem('Name', nameSignupIn.value);
       showAlert("Success! Account created.");
