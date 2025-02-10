@@ -73,8 +73,8 @@ createacctbtn.addEventListener("click", async function() {
       await setDoc(doc(db, "users", user.uid), {
         name: name,
         phone: phone,
-        email: signupEmail
-        password: passwordInput
+        email: signupEmail,
+        Password: passwordInput
       });
       // localStorage.setItem('Name', nameSignupIn.value);
       showAlert("Success! Account created.");
